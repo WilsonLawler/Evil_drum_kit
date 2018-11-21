@@ -12,6 +12,7 @@
       />
     -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="rwd.css" />
   </head>
   <body>
     <div class="keys">
@@ -70,9 +71,12 @@
 
       window.addEventListener("keydown", function(e) {
         console.log(e.keyCode);
-        playSound(e);
         var key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-        transition(key);
+        console.log(key);
+        if (key !== null) {
+          playSound(e);
+          transition(key);
+        }
       });
 
       kbds.forEach(function(kbd) {

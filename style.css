@@ -1,5 +1,5 @@
 html {
-  font-size: 10px;
+  font-size: 16px;
   background: url(https://goo.gl/rQ5K6k) bottom center;
   background-size: cover;
 }
@@ -24,10 +24,11 @@ html {
   border: 0.4rem solid black;
   border-radius: 0.5rem;
   margin: 1rem;
-  font-size: 1.5rem;
-  padding: 1rem 0.5rem;
+  font-size: 2rem;
+  padding: 1.5rem 0.5rem;
   transition: all 0.07s ease;
-  width: 10rem;
+  width: 20rem;
+  height: 10rem;
   text-align: center;
   color: white;
   background: rgba(0, 0, 0, 0.4);
