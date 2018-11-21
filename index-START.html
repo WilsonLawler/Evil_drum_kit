@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS Drum Kit</title>
+    <!--
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous"
+      />
+    -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="keys">
+      <div data-key="65" class="key">
+        <kbd>A</kbd> <span class="sound">clap</span>
+      </div>
+      <div data-key="83" class="key">
+        <kbd>S</kbd> <span class="sound">hihat</span>
+      </div>
+      <div data-key="68" class="key">
+        <kbd>D</kbd> <span class="sound">小屌鼓</span>
+      </div>
+      <div data-key="70" class="key">
+        <kbd>F</kbd> <span class="sound">ride</span>
+      </div>
+      <div data-key="71" class="key">
+        <kbd>G</kbd> <span class="sound">FUCK YOU!</span>
+      </div>
+      <div data-key="72" class="key">
+        <kbd>H</kbd> <span class="sound">敲鑼阿幹</span>
+      </div>
+      <div data-key="74" class="key">
+        <kbd>J</kbd> <span class="sound">硬派大鼓</span>
+      </div>
+      <div data-key="75" class="key">
+        <kbd>K</kbd> <span class="sound">暴走浪音</span>
+      </div>
+      <div data-key="76" class="key">
+        <kbd>L</kbd> <span class="sound">鬼之吼聲</span>
+      </div>
+    </div>
+
+    <audio data-key="65" src="my-sounds/clap_2.wav"></audio>
+    <audio data-key="83" src="my-sounds/OpenHihat08.wav"></audio>
+    <audio data-key="68" src="my-sounds/kick_2.wav"></audio>
+    <audio data-key="70" src="my-sounds/Ride1_2.wav"></audio>
+    <audio data-key="71" src="my-sounds/FUCK YOU.wav"></audio>
+    <audio data-key="72" src="my-sounds/crash.wav"></audio>
+    <audio data-key="74" src="my-sounds/Dragorn.wav"></audio>
+    <audio data-key="75" src="my-sounds/HIT.wav"></audio>
+    <audio data-key="76" src="my-sounds/dragon_roar.wav"></audio>
+
+    <script>
+      var kbds = document.querySelectorAll("div.key");
+
+      function transition(target) {
+        target.classList += " playing";
+        setTimeout(function() {
+          target.classList = "key";
+        }, 600);
+      }
+
+      function playSound(e) {
+        document.querySelector(`audio[data-key="${e.keyCode}"]`).play();
+      }
+
+      window.addEventListener("keydown", function(e) {
+        console.log(e.keyCode);
+        playSound(e);
+        var key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+        transition(key);
+      });
+
+      kbds.forEach(function(kbd) {
+        kbd.addEventListener("click", function(e) {
+          var kd = this;
+          var key = this.getAttribute("data-key");
+          document.querySelector(`audio[data-key="${key}"]`).play();
+          transition(kd);
+        });
+      });
+    </script>
+  </body>
+</html>
